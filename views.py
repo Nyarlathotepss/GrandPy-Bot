@@ -1,18 +1,17 @@
-from flask import Flask, request
+from flask import Flask, request, render_template, url_for
 
 app = Flask(__name__)
 app.debug = True
 
 
-@app.route('/index/', methods=['GET', 'POST'])
-def index():
+@app.route('/accueil/', methods=['GET', 'POST'])
+def accueil():
     if request.method == 'GET':
-        #affiche la page et le formulaire
+        return render_template('accueil.html')
 
     else:
-        #traiter les infos
-        #afficher le résultat
-
+        print("test")
+        # traiter les infos et afficher le résultat
 
 
 if __name__ == "__main__":
