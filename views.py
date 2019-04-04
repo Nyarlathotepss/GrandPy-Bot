@@ -10,8 +10,8 @@ def accueil():
         return render_template('accueil.html')
 
     else:
-        print("test")
-        # traiter les infos et afficher le résultat
+        return request.form["adress"]
+
 
 
 if __name__ == "__main__":
