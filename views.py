@@ -13,6 +13,5 @@ def accueil():
         return request.form["adress"]
 
 
-
 if __name__ == "__main__":
     app.run()
