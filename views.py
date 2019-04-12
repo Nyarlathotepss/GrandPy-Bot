@@ -15,7 +15,6 @@ def accueil():
         interaction.input_user = request.form["adress"]
         interaction.split_text(interaction.input_user)
         interaction.clean_text(interaction.input_user)
-        return str(interaction.list_user_input)
 
 
 if __name__ == "__main__":
