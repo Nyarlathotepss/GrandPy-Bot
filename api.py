@@ -4,17 +4,20 @@ import requests
 class ApiCommunication:
 
     def __init__(self):
-        self.r = requests.session()
+        self.r = None
         self.PARAMETERS = {}
+        self.lat = None
+        self.lon = None
 
-    def generate_parameters_gmaps(self, input_user):
-        self.PARAMETERS = {"query": input_user,
-                           "key": "AIzaSyAdO62_IhTqYg8IROK76ACbzm-xnbhyC2g"}
+    def generate_parameters_gmaps(self, latitude, longitude):
+        self.PARAMETERS = {"location": (latitude, longitude),
+                           "key": "maclef"}
 
     def generate_parameters_wiki(self, input_user):
         self.PARAMETERS = {"action": "query",
                            "format": "json",
-                           "text": input_user}
+                           "titles": input_user,
+                           "prop": "coordinates"}
 
     def get_map(self, url, parameters):
         self.r = self.r.get(url, parameters)

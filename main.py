@@ -31,7 +31,7 @@ class Interaction:
     def wiki_comm(self, input_user):
         """wikipedia return info about user input"""
         PARAMETERS = self.communication.generate_parameters_wiki(input_user)
-        self.wikipedia_return =  self.communication.get_info(wiki_url, PARAMETERS)
+        self.wikipedia_return = self.communication.get_info(wiki_url, PARAMETERS)
         return self.wikipedia_return
 
     def gmap_comm(self, input_user):

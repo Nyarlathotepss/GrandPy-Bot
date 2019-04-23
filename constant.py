@@ -2,4 +2,4 @@ stop_words = ["bonjour","a","abord","absolument","afin","ah","ai","aie","ailleur
 
 wiki_url = "https://fr.wikipedia.org/w/api.php"
 
-maps_url = "https://www.google.com/maps/search/?api=1"
+maps_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
