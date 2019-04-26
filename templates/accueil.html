@@ -3,21 +3,33 @@
     <head>
         <meta charset="UTF-8">
         <title>GrandPy Bot</title>
-        <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!--<link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" type="text/css" />-->
+        <link href="../static/style.css" rel="stylesheet" type="text/css" />
     </head>
 
-
     <body>
-        <h1>Bonjour et bienvenue sur la page de GrandPy Bot</h1>
-        <form method="post">
-            <p>Posez votre question à grandpy bot concernant **** : :</p>
-            <input type="text" name="adress" size="70" />
-        </form>
+        <div class="container-full">
+          <div class="row">
+            <div class="col-lg-12 text-center v-center">
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdO62_IhTqYg8IROK76ACbzm-xnbhyC2g&callback=initMap"
-        type="text/javascript"></script>
-
-
+              <h1>Bonjour et bienvenue sur la page de GrandPy Bot</h1>
+              <p class="lead">Qu'elle est ta question a GrandPy Bot mon petit je t'écoute.</p>
+                <br>
+                <br>
+            </div>
+          </div>
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <form class="col-lg-6">
+                    <div class= "input-group col-lg-offset-4 col-lg-8">
+                      <input type="text" class="center-block form-control input-lg" title="la question." placeholder="Entrez votre question ici" id="user_question">
+                      <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 
 
