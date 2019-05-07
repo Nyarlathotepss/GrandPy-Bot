@@ -8,6 +8,7 @@ class ModifyUserInput:
     def __init__(self):
         self.user_input = None
         self.list_user_input = []
+        self.question_to_display = None
 
     def split_text(self, user_input):
         """string to list"""
@@ -18,6 +19,11 @@ class ModifyUserInput:
         for word in user_input_split:
             if word not in stop_words:
                     self.list_user_input.append(word)
+
+    def list_questions_to_display(self, list_question):
+        """display the questions"""
+        self.question_to_display = "\n".join(list_question)
+        print(self.question_to_display)
 
 
 class Interaction:

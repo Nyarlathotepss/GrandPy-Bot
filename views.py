@@ -14,9 +14,9 @@ def accueil():
 
     else:
         user_question = request.form
-        print(user_question)
         la_question.append(user_question["question"])
-        return render_template('dialog.html', la_question=la_question)
+        interaction.list_questions_to_display(la_question)
+        return render_template('dialog.html', la_question=str(interaction.question_to_display))
 
 
 if __name__ == "__main__":
