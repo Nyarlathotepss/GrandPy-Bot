@@ -1,9 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Antic+Slab);
 
-html,body {
-  height:70%;
-}
-
 h1 {
   font-family: 'Antic Slab', serif;
   font-size:80px;
@@ -41,4 +37,8 @@ footer {
     width: 100%;
     background-color:#110022;
     color:#eee;
-  }
+}
+
+#content_gmap {
+    height: 400px;
+}

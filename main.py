@@ -22,7 +22,7 @@ class ModifyUserInput:
 
     def list_questions_to_display(self, list_question):
         """display the questions"""
-        self.question_to_display = "\n".join(list_question)
+        self.question_to_display = "<br>".join(list_question)
         print(self.question_to_display)
 
 
@@ -33,6 +33,7 @@ class Interaction:
         self.wikipedia_return = None
         self.googlemap_return = None
         self.communication = ApiCommunication()
+        self.googlemap_key = None
 
     def wiki_comm(self, input_user):
         """wikipedia return info about user input"""

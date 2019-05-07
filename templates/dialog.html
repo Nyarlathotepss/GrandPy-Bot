@@ -1,9 +1,25 @@
 {% extends "accueil.html" %}
 
 {% block content_dialog %}
-{{la_question}}
+{% for value in la_question %}
+    <div>
+        {{value}}
+    </div>
+{% endfor %}
 {% endblock %}
 
+
 {% block content_gmap %}
-et voici la map google !
+
+<script>
+function initMap() {
+  var place = {lat: -25.344, lng: 131.036 };
+  var map = new google.maps.Map(
+      document.getElementById('content_gmap'), {zoom: 4, center: place});
+  var marker = new google.maps.Marker({position: place, map: content_gmap});
+}
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key={{gmap_key}}&callback=initMap">
+</script>
 {% endblock %}

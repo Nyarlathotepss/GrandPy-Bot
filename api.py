@@ -1,4 +1,4 @@
-import requests
+import requests, os
 
 
 class ApiCommunication:
@@ -8,6 +8,7 @@ class ApiCommunication:
         self.PARAMETERS = {}
         self.lat = None
         self.lon = None
+        self.googlemap_key = None
 
     def generate_parameters_gmaps(self, latitude, longitude):
         self.PARAMETERS = {"location": (latitude, longitude),
