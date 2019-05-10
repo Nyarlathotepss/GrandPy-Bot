@@ -8,7 +8,7 @@ class ModifyUserInput:
     def __init__(self):
         self.user_input = None
         self.user_input_split = None
-        self.list_input_user_cleaned = []
+        self.list_input_user_cleaned = None
         self.input_to_search = None
 
     def split_text(self, user_input):
@@ -22,11 +22,12 @@ class ModifyUserInput:
                     self.list_input_user_cleaned.append(word)
 
     def format_text_to_search(self):
-        self.input_to_search = '|'.join(self.list_input_user_cleaned)
+        for word in self.list_input_user_cleaned:
+            self.input_to_search += word + "|"
 
     def modification_process(self):
         self.user_input.split_text(self.user_input)
-        self.user_input_split.clean_text(self.user_input)
+        self.user_input_split.clean_text()
         self.list_input_user_cleaned.format_text_to_search()
 
 
