@@ -7,23 +7,27 @@ class ModifyUserInput:
 
     def __init__(self):
         self.user_input = None
-        self.list_user_input = []
-        self.question_to_display = None
+        self.user_input_split = None
+        self.list_input_user_cleaned = []
+        self.input_to_search = None
 
     def split_text(self, user_input):
         """string to list"""
-        self.user_input = user_input.split()
+        self.user_input_split = user_input.split()
 
-    def clean_text(self, user_input_split):
+    def clean_text(self):
         """clean text of stop words"""
-        for word in user_input_split:
+        for word in self.user_input_split:
             if word not in stop_words:
-                    self.list_user_input.append(word)
+                    self.list_input_user_cleaned.append(word)
 
-    def list_questions_to_display(self, list_question):
-        """display the questions"""
-        self.question_to_display = "<br>".join(list_question)
-        print(self.question_to_display)
+    def format_text_to_search(self):
+        self.input_to_search = '|'.join(self.list_input_user_cleaned)
+
+    def modification_process(self):
+        self.user_input.split_text(self.user_input)
+        self.user_input_split.clean_text(self.user_input)
+        self.list_input_user_cleaned.format_text_to_search()
 
 
 class Interaction:
