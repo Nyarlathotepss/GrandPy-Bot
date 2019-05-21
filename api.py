@@ -10,6 +10,7 @@ class ApiParameters:
         self.PARAMETERS = None
         self.lat = None
         self.lon = None
+        self.description = None
         self.wikipedia_return = None
         self.googlemap_return = None
         self.googlemap_key = os.environ.get("gmap_key")  # Enter your own variable's name environnement
@@ -23,7 +24,7 @@ class ApiParameters:
         self.PARAMETERS = {"action": "query",
                            "format": "json",
                            "titles": input_user,
-                           "prop": "coordinates"}
+                           "prop": "coordinates|description"}
 
     def get_info(self, url, parameters):
         self.r = requests.get(url, parameters)
@@ -41,3 +42,14 @@ class ApiParameters:
         self.generate_parameters_gmaps(latitude, longitude)
         self.googlemap_return = self.get_info(maps_url, self.PARAMETERS)
         return self.googlemap_return
+
+    def get_info_from_json(self):
+        """get the localization from .json (wikipedia)"""
+        DATA = self.wikipedia_return
+        PAGES = DATA['query']['pages']
+        for k, v in PAGES.items():
+            self.lat = str(v['coordinates'][0]['lat'])
+            self.lon = str(v['coordinates'][0]['lon'])
+            self.description = str(v['description'])
+
+

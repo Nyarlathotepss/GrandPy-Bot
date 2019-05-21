@@ -14,7 +14,6 @@ gmap_key = os.environ.get("gmap_key")  # Enter your own variable's name environe
 @app.route('/accueil/', methods=['GET', 'POST'])
 def accueil():
     if request.method == 'GET':
-        print(gmap_key)
         return render_template('accueil.html')
 
     else:
