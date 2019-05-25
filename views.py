@@ -6,8 +6,8 @@ import os
 app = Flask(__name__)
 app.debug = True
 user_interaction = ModifyUserInput()
-key_gmap = ApiParameters()
-la_question = []
+Api_Obj = ApiParameters()
+list_dialog = []
 gmap_key = os.environ.get("gmap_key")  # Enter your own variable's name environement
 
 
@@ -18,8 +18,13 @@ def accueil():
 
     else:
         user_question = request.form
-        la_question.append(user_question["question"])
-        return render_template('dialog.html', la_question=la_question, gmap_key=key_gmap.googlemap_key)
+        user_interaction.user_input = user_question["question"]
+        user_interaction.modification_process()
+        Api_Obj.wiki_comm(user_interaction.input_to_search)
+        Api_Obj.get_response_from_papybot()
+        list_dialog.extend([user_question["question"], Api_Obj.response + Api_Obj.description])
+        return render_template('dialog.html', dialog_to_show=list_dialog, gmap_key=Api_Obj.googlemap_key,
+                               latitude=Api_Obj.lat, longitude=Api_Obj.lon)
 
 
 if __name__ == "__main__":

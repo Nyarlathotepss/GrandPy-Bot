@@ -69,3 +69,8 @@ footer {
   clear: both;
   display: table;
 }
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}

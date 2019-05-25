@@ -3,3 +3,6 @@ stop_words = ["bonjour","a","abord","absolument","afin","ah","ai","aie","ailleur
 wiki_url = "https://fr.wikipedia.org/w/api.php"
 
 maps_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
+
+grandpy_bot_responses = ["Voila ce que je sais sur ta demande mon petit :", "Hummm je crois me souvenir de ceci sur"
+                         " ta question mon canard :", "Mais bien sur que j'ai une information sur lieu :"]

@@ -3,7 +3,7 @@ from api import ApiParameters
 
 a = ModifyUserInput()
 b = ApiParameters()
-user_input = "la tour eiffel"
+user_input = "marseille"
 
 a.user_input = user_input
 print(a.user_input)
@@ -13,7 +13,8 @@ print(a.input_to_search)
 
 b.wiki_comm(a.input_to_search)
 print(b.json)
+print(b.lon, b.lat)
 
-b.get_info_from_json()
-print(b.lat, b.lon, b.description)
+a.get_response_from_papybot()
+print(a.response)
 

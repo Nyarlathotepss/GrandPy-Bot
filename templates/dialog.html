@@ -1,11 +1,18 @@
 {% extends "accueil.html" %}
 
 {% block content_dialog %}
-{% for value in la_question %}
+{% for value in dialog_to_show %}
+{% if value == value[0] %}
     <div class="container">
         <img src="/static/invite.jpg" alt="Avatar">
         <p>{{value}}</p>
     </div>
+{%else%}
+    <div class="container darker">
+        <img src="/static/grandpy-bot.jpg" alt="Avatar" class="right">
+        <p>{{value}}</p>
+    </div>
+{% endif%}
 {% endfor %}
 {% endblock %}
 
@@ -14,10 +21,10 @@
 
 <script>
 function initMap() {
-  var place = {lat: -25.344, lng: 131.036 };
+  var place = {lat:{{latitude}}, lng:{{longitude}} };
   var map = new google.maps.Map(
       document.getElementById('content_gmap'), {zoom: 4, center: place});
-  var marker = new google.maps.Marker({position: place, map: content_gmap});
+  var marker = new google.maps.Marker({position: place, map: map});
 }
 </script>
 <script async defer

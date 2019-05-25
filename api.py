@@ -1,5 +1,6 @@
 import requests, os
 from constant import *
+import random
 
 
 class ApiParameters:
@@ -15,6 +16,7 @@ class ApiParameters:
         self.googlemap_return = None
         self.googlemap_key = os.environ.get("gmap_key")  # Enter your own variable's name environnement
         # instead of ("gmap_key")
+        self.response = None
 
     def generate_parameters_gmaps(self, latitude, longitude):
         self.PARAMETERS = {"location": (latitude, longitude),
@@ -35,7 +37,7 @@ class ApiParameters:
         """wikipedia return info about user input"""
         self.generate_parameters_wiki(input_user)
         self.wikipedia_return = self.get_info(wiki_url, self.PARAMETERS)
-        return self.wikipedia_return
+        self.get_info_from_json()
 
     def gmap_comm(self, latitude, longitude):
         """google maps return a map about user input"""
@@ -52,4 +54,6 @@ class ApiParameters:
             self.lon = str(v['coordinates'][0]['lon'])
             self.description = str(v['description'])
 
-
+    def get_response_from_papybot(self):
+        """Build the grandpy response"""
+        self.response = random.choice(grandpy_bot_responses)

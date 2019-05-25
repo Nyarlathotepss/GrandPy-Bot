@@ -1,5 +1,5 @@
 from constant import *
-import os
+
 
 class ModifyUserInput:
     """ check user input to found data to exploit"""
@@ -31,3 +31,4 @@ class ModifyUserInput:
         self.split_text(self.user_input)
         self.clean_text(self.user_input_split)
         self.format_text_to_search(self.list_input_user_cleaned)
+
