@@ -1,17 +1,23 @@
 {% extends "accueil.html" %}
 
 {% block content_dialog %}
+{% set loop_number = 0 %}
 {% for value in dialog_to_show %}
-{% if value == value[0] %}
+
+    {# note : need to split the question - response with method index from list #}
+
+    {% if dialog_to_show.index(value)%2 == 0 %}
     <div class="container">
         <img src="/static/invite.jpg" alt="Avatar">
         <p>{{value}}</p>
     </div>
+
 {%else%}
     <div class="container darker">
         <img src="/static/grandpy-bot.jpg" alt="Avatar" class="right">
         <p>{{value}}</p>
     </div>
+
 {% endif%}
 {% endfor %}
 {% endblock %}

@@ -50,6 +50,7 @@ class ApiParameters:
         DATA = self.wikipedia_return
         PAGES = DATA['query']['pages']
         for k, v in PAGES.items():
+            print(v)
             self.lat = str(v['coordinates'][0]['lat'])
             self.lon = str(v['coordinates'][0]['lon'])
             self.description = str(v['description'])

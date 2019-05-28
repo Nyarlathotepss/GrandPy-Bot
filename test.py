@@ -15,6 +15,4 @@ b.wiki_comm(a.input_to_search)
 print(b.json)
 print(b.lon, b.lat)
 
-a.get_response_from_papybot()
-print(a.response)
 
