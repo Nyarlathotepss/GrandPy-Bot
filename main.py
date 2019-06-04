@@ -5,7 +5,7 @@ class ModifyUserInput:
     """ check user input to found data to exploit"""
 
     def __init__(self):
-        self.user_input = None
+        self.user_input = str
         self.user_input_split = None
         self.list_input_user_cleaned = []
         self.input_to_search = None

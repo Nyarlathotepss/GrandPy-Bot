@@ -16,7 +16,6 @@ def accueil():
         return render_template('accueil.html')
 
     else:
-        list_number_loop = 0
         user_interaction = ModifyUserInput()
         user_question = request.form
         user_interaction.user_input = user_question["question"]
