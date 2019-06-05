@@ -18,3 +18,8 @@ def test_generate_parameters_wiki():
                             "titles": a.input_to_search,
                             "prop": "coordinates|description"}
 
+
+def test_generate_gmaps():
+    b.generate_parameters_gmaps(b.lat, b.lon)
+    assert b.PARAMETERS == {"location": (b.lat, b.lon),
+                            "key": b.googlemap_key}
