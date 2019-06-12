@@ -31,7 +31,7 @@ class ApiParameters:
     def get_info(self, url, parameters):
         self.r = requests.get(url, parameters)
         self.json = self.r.json()
-        return self.r.json()
+        return self.json
 
     def wiki_comm(self, input_user):
         """wikipedia return info about user input"""

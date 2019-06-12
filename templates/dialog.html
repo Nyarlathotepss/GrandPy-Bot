@@ -1,7 +1,6 @@
 {% extends "accueil.html" %}
 
 {% block content_dialog %}
-{% set loop_number = 0 %}
 {% for value in dialog_to_show %}
 
     {# note : need to split the question - response with method index from list #}
@@ -12,7 +11,7 @@
         <p>{{value}}</p>
     </div>
 
-{%else%}
+    {%else%}
     <div class="container darker">
         <img src="/static/grandpy-bot.jpg" alt="Avatar" class="right">
         <p>{{value}}</p>

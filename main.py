@@ -24,7 +24,7 @@ class ModifyUserInput:
         """format text for wikipedia API"""
         list_input_cleaned_and_format = []
         for word in list_input_cleaned:
-            list_input_cleaned_and_format.append(word.capitalize())
+            list_input_cleaned_and_format.append(word)
         self.input_to_search = " ".join(list_input_cleaned_and_format)
 
     def modification_process(self):

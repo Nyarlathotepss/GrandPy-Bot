@@ -10,19 +10,18 @@ h1 {
 	color:#DDCCEE;
 }
 
-.container-fix {
-  margin: 0 auto;
+.container-fluid {
+  margin: 0;
   width: 100%;
   min-height:60%;
   background-color:#110022;
   color:#eee;
-  overflow:hidden;
 }
 
-.container-fix a {
+.container-fluid a {
   color:#efefef;
   text-decoration:none;
-}
+} 
 
 footer {
     padding: 0;
@@ -39,9 +38,12 @@ footer {
 
 #content_gmap {
     height: 400px;
-    width: 400px;
 }
 
+
+.container-dialog {
+    padding: 30px;
+}
 /* Content for chat box */
 .container {
   border: 2px solid #dedede;
