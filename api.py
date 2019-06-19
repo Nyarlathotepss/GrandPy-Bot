@@ -17,6 +17,7 @@ class ApiParameters:
         self.googlemap_key = os.environ.get("gmap_key")  # Enter your own variable's name environnement
         # instead of ("gmap_key")
         self.response = None
+        self.responce_dont_understand = grandpy_bot_dont_understand
 
     def generate_parameters_gmaps(self, latitude, longitude):
         self.PARAMETERS = {"location": (latitude, longitude),
