@@ -1,7 +1,6 @@
 from main import ModifyUserInput
 from api import ApiParameters
 import pytest, requests
-from pytest import p
 a = ModifyUserInput()
 b = ApiParameters()
 a.user_input = "bonjour marseille"
