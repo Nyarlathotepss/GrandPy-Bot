@@ -1,13 +1,11 @@
 from flask import Flask, request, render_template
 from main import ModifyUserInput
 from api import ApiParameters
-import os
 
 app = Flask(__name__)
 app.debug = False
 Api_Obj = ApiParameters()
 list_dialog = []
-gmap_key = os.environ.get("gmap_key")  # Enter your own variable's name environement
 
 
 @app.route('/accueil/', methods=['GET', 'POST'])

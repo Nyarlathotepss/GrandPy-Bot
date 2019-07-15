@@ -30,6 +30,7 @@ class ApiParameters:
                            "prop": "coordinates|description"}
 
     def get_info(self, url, parameters):
+        """get informations from api and return a json"""
         self.r = requests.get(url, parameters)
         self.json = self.r.json()
         return self.json
@@ -49,9 +50,9 @@ class ApiParameters:
     def get_info_from_json(self):
         """get the localization from .json (wikipedia)"""
         DATA = self.wikipedia_return
+        print(DATA)
         PAGES = DATA['query']['pages']
         for k, v in PAGES.items():
-            print(v)
             self.lat = str(v['coordinates'][0]['lat'])
             self.lon = str(v['coordinates'][0]['lon'])
             self.description = str(v['description'])

@@ -1,6 +1,7 @@
 from main import ModifyUserInput
 from api import ApiParameters
-import pytest, requests
+import requests
+
 a = ModifyUserInput()
 b = ApiParameters()
 a.user_input = "bonjour marseille"
@@ -34,25 +35,28 @@ class MockResponse:
 def test_get_info(monkeypatch):
     PARAMETERS = {"lat": "00"}
 
-    def mock_get():
+    def mock_get(url,parameters):
         return MockResponse
     monkeypatch.setattr(requests, "get", mock_get)
-    result = b.get_info("https://test", PARAMETERS)
+    result = b.get_info("http://toto", PARAMETERS)
     assert result["lat"] == "00"
 
-"""
-class FakeRequestsLibrary(object):
 
-    def get(self, url):
-        self.url = url
-        return self
-    def json(self):
-        return self.data
-def test_google():
-    fake = FakeRequestsLibrary()
-    fake.data = {"lat": "00", "lon": "00"}
-    with patch('requests.get', fake.get):
-        coordinates = b.get_info_from_json()
+class MockResponse1:
+    @staticmethod
+    def json():
+        return {'batchcomplete': '', 'query': {'normalized': [{'from': 'paris', 'to': 'Paris'}], 'pages': {'681159': {'pageid': 681159, 'ns': 0, 'title': 'Paris',
+                'coordinates': [{'lat': 48.856578, 'lon': 2.351828, 'primary': '', 'globe': 'earth'}],
+                'description': 'capitale de la France', 'descriptionsource': 'central'}}}}
 
-    assert coordinates == {"lat": "00", "lon": "00"}
-"""
+
+def test_wiki_comm(monkeypatch):
+
+    def mock_get(url, parameters):
+        return MockResponse1
+    monkeypatch.setattr(requests, "get", mock_get)
+    result = b.wiki_comm("test")
+    b.get_info_from_json()
+    assert b.lon == "2.351828"
+    assert b.lat == "48.856578"
+    assert b.description == "capitale de la France"
