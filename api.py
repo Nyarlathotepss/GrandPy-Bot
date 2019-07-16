@@ -1,6 +1,7 @@
-import requests, os
-from constant import *
+import os
 import random
+import requests
+from constant import *
 
 
 class ApiParameters:
@@ -20,10 +21,12 @@ class ApiParameters:
         self.responce_dont_understand = grandpy_bot_dont_understand
 
     def generate_parameters_gmaps(self, latitude, longitude):
+        """generate paramaters for googlemaps api"""
         self.PARAMETERS = {"location": (latitude, longitude),
                            "key": self.googlemap_key}
 
     def generate_parameters_wiki(self, input_user):
+        """generate paramaters for wikimedia api"""
         self.PARAMETERS = {"action": "query",
                            "format": "json",
                            "titles": input_user,

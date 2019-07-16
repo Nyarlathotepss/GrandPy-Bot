@@ -1,4 +1,4 @@
-from constant import *
+from constant import stop_words
 
 
 class ModifyUserInput:
@@ -28,7 +28,7 @@ class ModifyUserInput:
         self.input_to_search = " ".join(list_input_cleaned_and_format)
 
     def modification_process(self):
+        """use all method in this class to format user input"""
         self.split_text(self.user_input)
         self.clean_text(self.user_input_split)
         self.format_text_to_search(self.list_input_user_cleaned)
-
