@@ -6,13 +6,12 @@ class ModifyUserInput:
     """ check user input to found data to exploit"""
 
     def __init__(self):
-        self.raw_user_input = str
         self.input_to_search = None
-        self.response_from_papybot = str
+        self.response_from_papybot = None
 
     def clean_punctuation(self, user_input):
         """deleting punctuations from user_input"""
-        user_input_without_punct = ""
+        user_input_without_punct = str()
         for char in user_input:
             if char not in PUNCTUATION:
                 user_input_without_punct = user_input_without_punct + str(char)
@@ -29,7 +28,7 @@ class ModifyUserInput:
         """clean text of stop words"""
         list_input_user_cleaned = []
         for word in user_input_split:
-            if word not in stop_words:
+            if word not in STOP_WORDS:
                 list_input_user_cleaned.append(word)
         return list_input_user_cleaned
 
@@ -50,4 +49,4 @@ class ModifyUserInput:
 
     def get_random_response_from_papybot(self):
         """Build the grandpy response"""
-        self.response_from_papybot = random.choice(grandpy_bot_responses)
+        self.response_from_papybot = random.choice(GRANDPY_BOT_ANSWERS)
