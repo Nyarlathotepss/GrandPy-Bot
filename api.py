@@ -4,8 +4,8 @@ import os, requests, json, wikipedia, constant
 class ApiWiki:
 
     def __init__(self):
-        self.page_id = str
-        self.description = str
+        self.page_id = str()
+        self.description = str()
 
     def generate_parameters_wiki_1turn(self, input_user):
         """generate paramaters for wikimedia api to get page id with name place"""
@@ -52,12 +52,12 @@ class ApiWiki:
 
     def wiki_procedure_get_pageid(self, input_user):
         parameters = self.generate_parameters_wiki_1turn(input_user)
-        wiki_json = self.get_info(constant.wiki_url, parameters)
+        wiki_json = self.get_info(constant.WIKI_URL, parameters)
         self.page_id = self.get_pageid_from_json(wiki_json)
 
     def wiki_procedure_get_description(self, page_id):
         parameters = self.generate_parameters_wiki_2turn(page_id)
-        wiki_json = self.get_info(constant.wiki_url, parameters)
+        wiki_json = self.get_info(constant.WIKI_URL, parameters)
         self.get_description_from_json(wiki_json)
 
 
@@ -72,11 +72,11 @@ class ApiGoogleMap:
 
     def generate_parameters_gmaps_to_search(self, string):
         """generate paramaters for googlemaps api"""
-        paramters = {"input": string,
+        parameters = {"input": string,
                      "inputtype": "textquery",
                      "key": self.googlemap_key,
                      "fields": "geometry"}
-        return paramters
+        return parameters
 
     def get_info(self, url, parameters):
         """get informations from api and return a json"""

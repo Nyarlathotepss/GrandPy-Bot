@@ -38,6 +38,7 @@
     <div class="container-dialog">
         <div class="row">
             <div id="content_dialog" class="col-lg-8">{% block content_dialog %}{% endblock %}</div>
+
             <div id="content_gmap" class="col-lg-4">{% block content_gmap %}{% endblock %}</div>
         </div>
     </div>
@@ -47,16 +48,4 @@
     <footer>
         <p>MILLET Nicolas <br/><a href="https://github.com/Nyarlathotepss/GrandPy-Bot.git"> Lien GitHub </a></p>
     </footer>
-
-                            <script>
-                            $("button#btn").click(function(){
-                            $.ajax({
-                                url: "/accueil/",
-                                type: "POST",
-                                data: {"question": $("input#question").val()},
-                                success: function(resp){
-                                    $("div#response").append(resp.data)
-                                }})
-                             })
-                            </script>
 </html>
