@@ -6,6 +6,8 @@ class ApiWiki:
     def __init__(self):
         self.page_id = str()
         self.description = str()
+        self.json_page_id = None
+        self.json_description = None
 
     def generate_parameters_wiki_1turn(self, input_user):
         """generate paramaters for wikimedia api to get page id with name place"""
@@ -34,31 +36,27 @@ class ApiWiki:
 
     def get_pageid_from_json(self, json):
         """get the pageid about input_user from .json"""
-        page_id = None
         data = json
         print(data)
         pages = data['query']['search']
         for k, v in enumerate(pages):
-            page_id = str(v['pageid'])
-        return page_id
+            self.page_id = str(v['pageid'])
 
     def get_description_from_json(self, json):
         """get the pageid about input_user from .json"""
         data = json
+        print(data)
         pages = data['query']['pages']
-        print(pages)
         for k, v in pages.items():
             self.description = str(v['description'])
 
-    def wiki_procedure_get_pageid(self, input_user):
+    def wiki_procedure_request_get_pageid(self, input_user):
         parameters = self.generate_parameters_wiki_1turn(input_user)
-        wiki_json = self.get_info(constant.WIKI_URL, parameters)
-        self.page_id = self.get_pageid_from_json(wiki_json)
+        self.json_page_id = self.get_info(constant.WIKI_URL, parameters)
 
-    def wiki_procedure_get_description(self, page_id):
+    def wiki_procedure_requests_get_description(self, page_id):
         parameters = self.generate_parameters_wiki_2turn(page_id)
-        wiki_json = self.get_info(constant.WIKI_URL, parameters)
-        self.get_description_from_json(wiki_json)
+        self.json_description = self.get_info(constant.WIKI_URL, parameters)
 
 
 class ApiGoogleMap:
@@ -73,16 +71,15 @@ class ApiGoogleMap:
     def generate_parameters_gmaps_to_search(self, string):
         """generate paramaters for googlemaps api"""
         parameters = {"input": string,
-                     "inputtype": "textquery",
-                     "key": self.googlemap_key,
-                     "fields": "geometry"}
+                      "inputtype": "textquery",
+                      "key": self.googlemap_key,
+                      "fields": "geometry"}
         return parameters
 
     def get_info(self, url, parameters):
         """get informations from api and return a json"""
         r = requests.get(url, parameters)
-        json = r.json()
-        return json
+        return r.json()
 
     def gmap_comm(self, string):
         """google maps return a map about user input"""

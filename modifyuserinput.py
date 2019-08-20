@@ -41,8 +41,7 @@ class ModifyUserInput:
 
     def modification_process(self, raw_user_input):
         """use all method in this class to format user input"""
-        step_1 = self.clean_punctuation(raw_user_input)# est ce intelligent de construire cela
-        print(step_1)
+        step_1 = self.clean_punctuation(raw_user_input)
         step_2 = self.split_text(step_1)
         step_3 = self.clean_text(step_2)
         self.format_text_to_search(step_3)
