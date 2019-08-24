@@ -66,7 +66,6 @@ class ApiGoogleMap:
         # instead of ("gmap_key")
         self.googlemap_json = None
         self.url_apigmap_search = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
-        self.url_apigmap_display_id = "https://maps.googleapis.com/maps/api/place/details/json?"
 
     def generate_parameters_gmaps_to_search(self, string):
         """generate paramaters for googlemaps api"""

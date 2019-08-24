@@ -27,7 +27,7 @@
                       <input type="text" class="center-block form-control input-lg" title="question." placeholder="Entrez votre question ici" name="question">
                       <span class="input-group-btn" ><button class="btn btn-primary" id="btn" type="submit">OK</button></span>
                         <!-- Step ajax lINK WITH BUTTON -->
-                        <div id="response"></div>
+
 
                     </div>
                 </form>
@@ -35,14 +35,19 @@
 
             </div>
         </div>
+    <div id="response"></div>
     <div class="container-dialog">
         <div class="row">
-            <div id="content_dialog" class="col-lg-8">{% block content_dialog %}{% endblock %}</div>
+            <div id="content_dialog" class="col-lg-8"></div>
 
-            <div id="content_gmap" class="col-lg-4">{% block content_gmap %}{% endblock %}</div>
+            <div id="content_gmap" class="col-lg-4"></div>
+
         </div>
-    </div>
 
+        <script type="text/javascript" src="{{url_for('static', filename='contents.js')}}"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{gmap_key}}&callback=initMap"></script>
+
+    </div>
     </body>
 
     <footer>

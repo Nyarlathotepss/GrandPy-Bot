@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, jsonify, render_template, request
 from modifyuserinput import *
 from api import *
 from constant import *
@@ -52,10 +52,11 @@ class Control:
         self.user_interaction.get_random_response_from_papybot()
         self.list_dialog.extend(
             [self.user_question, self.user_interaction.response_from_papybot + self.object_wiki.description])
-        return render_template('dialog.html', dialog_to_show=self.list_dialog, gmap_key=self.object_gmap.googlemap_key,
-                               latitude=self.coordinates[0], longitude=self.coordinates[1])
+        return jsonify(dialog_to_show=self.list_dialog, gmap_key=self.object_gmap.googlemap_key,
+                       latitude=self.coordinates[0], longitude=self.coordinates[1])
 
 
+object_control = Control()
 @app.route('/home/', methods=['GET'])
 def home_get():
     return render_template('home.html')
@@ -64,7 +65,6 @@ def home_get():
 @app.route('/home/', methods=['POST'])
 def home_post():
 
-    object_control = Control()
     raw_question = request.form
     object_control.user_question = raw_question["question"]
 
@@ -83,7 +83,7 @@ def home_post():
                     object_control.control_if_wiki_found_description()
                     result = object_control.last_step()
                     return result
-    return render_template('dialog.html', dialog_to_show=object_control.list_dialog)
+    return jsonify(dialog_to_show=object_control.list_dialog)
 
 
 if __name__ == "__main__":

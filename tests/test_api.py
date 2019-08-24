@@ -1,6 +1,6 @@
 from views import Control
-import requests
 from constant import *
+import api
 
 
 class MockResponse:
@@ -18,30 +18,26 @@ class MockResponse:
 
 def test_api_google_with_empty_json(monkeypatch):
 
-    object_mock = MockResponse()
-    object_control = Control()
+    object_apigoogle = api.ApiGoogleMap()
 
     def mock_get(*args):
-        return object_mock.json()
+        return MockResponse()
 
-    monkeypatch.setattr(requests, "get", mock_get)
-    result = requests.get("www.fake_api_google.com", {"fake": "parameter"})
+    monkeypatch.setattr(api.requests, "get", mock_get)
+    result = object_apigoogle.get_info("www.fake_api_google.com", {"fake": "parameter"})
     assert result == {}
-    object_control.object_gmap.googlemap_json = result
-    object_control.control_if_google_found_place()
-    assert object_control.user_interaction.response_from_papybot == GRANDPY_BOT_DONT_UNDERSTAND
 
 
 def test_api_wiki_with_empty_json(monkeypatch):
 
-    object_mock = MockResponse()
+    object_api_wiki = api.ApiWiki()
     object_control = Control()
 
     def mock_get(*args):
-        return object_mock.json()
+        return MockResponse()
 
-    monkeypatch.setattr(requests, "get", mock_get)
-    result = requests.get("www.fake_api_wikimedia.com", {"fake": "parameter"})
+    monkeypatch.setattr(api.requests, "get", mock_get)
+    result = object_api_wiki.get_info("www.fake_api_wikimedia.com", {"fake": "parameter"})
     assert result == {}
     object_control.object_wiki.json_page_id = result
     object_control.object_wiki.json_description = result
@@ -51,14 +47,15 @@ def test_api_wiki_with_empty_json(monkeypatch):
 
 def test_api_wiki_with_no_result_found(monkeypatch):
 
-    object_mock = MockResponse({"result": "not found"})
+    MockResponse({"result": "not found"})
     object_control = Control()
+    object_api_wiki = api.ApiWiki()
 
     def mock_get(*args):
-        return object_mock.json()
+        return MockResponse()
 
-    monkeypatch.setattr(requests, "get", mock_get)
-    result = requests.get("www.fake_api_wikimedia.com", {"fake": "parameter"})
+    monkeypatch.setattr(api.requests, "get", mock_get)
+    result = object_api_wiki.get_info("www.fake_api_wikimedia.com", {"fake": "parameter"})
     assert result == {"result": "not found"}
     object_control.object_wiki.json_page_id = result
     object_control.object_wiki.json_description = result
