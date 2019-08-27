@@ -5,6 +5,7 @@ import requests
 
 
 def test_clean_text():
+    """check if sentence is cleaned about stop words"""
     test = ModifyUserInput()
     test.user_input = "bonjour as tu des infos sur  marseille"
     test.modification_process(test.user_input)
@@ -12,6 +13,7 @@ def test_clean_text():
 
 
 def test_clean_punctuation():
+    """check if sentence is cleaned about punctuation"""
     test = ModifyUserInput()
     test.user_input = "notre-,dame-de-paris?!"
     test.modification_process(test.user_input)
@@ -19,7 +21,7 @@ def test_clean_punctuation():
 
 
 def test_sentence_empty():
-    """simulate an empty user_input """
+    """simulate an empty user_input and check if the user response is correct """
     object_control = Control()
     object_control.user_question = ""
     object_control.control_if_empty()
@@ -27,13 +29,14 @@ def test_sentence_empty():
 
 
 class MockResponse:
-
+    """mock the json method with an empty json"""
     @staticmethod
     def json():
         return {'status': 'ZERO_RESULTS'}
 
 
 def test_no_sense(monkeypatch):
+    """check if the user questions has non sense that program return an answer to user """
     object_control = Control()
     object_control.user_question = "sdfsdfsdfds"
     """simulate a non sense user_input, for example the input user could be : blablablabla """

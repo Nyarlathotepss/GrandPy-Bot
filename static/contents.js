@@ -18,14 +18,18 @@ function initMap(lat, lon) {
 }
 
 function displayDialog(dialog_to_show) {
-    if dialog_to_show.forEach /2 == 0:
-        <div class="container">
-        <img src="/static/invite.jpg" alt="Avatar">
-        <p>{{value}}</p>
-        </div>
-    else:
-        <div class="container darker">
-        <img src="/static/grandpy-bot.jpg" alt="Avatar" class="right">
-        <p>{{value}}</p>
-        </div>
+    document.getElementById(content_dialog);
+    dialog_to_show.forEach(function(value, index){
+        if (index % 2 === 0) {
+            <div class="container">
+            <img src="/static/invite.jpg" alt="Avatar">
+            <p>value</p>
+            </div>
+        })
+        else {
+            <div class="container darker">
+            <img src="/static/grandpy-bot.jpg" alt="Avatar" class="right">
+            <p>value</p>
+            </div>
+        };
 }

@@ -2,7 +2,7 @@ import os, requests, json, wikipedia, constant
 
 
 class ApiWiki:
-
+    """class for communication with wikimedia api"""
     def __init__(self):
         self.page_id = str()
         self.description = str()
@@ -60,7 +60,7 @@ class ApiWiki:
 
 
 class ApiGoogleMap:
-
+    """class for communication with google map api"""
     def __init__(self):
         self.googlemap_key = os.environ.get("gmap_key")  # Enter your own variable's name environnement
         # instead of ("gmap_key")

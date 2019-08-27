@@ -4,20 +4,21 @@ import api
 
 
 class MockResponse:
+    """class to mock the json response and create the json file"""
 
     def __init__(self, your_json=None):
-
         if your_json is None:
             self.fake_json = {}
         else:
             self.fake_json = your_json
 
     def json(self):
+        """modify the return of json method"""
         return self.fake_json
 
 
 def test_api_google_with_empty_json(monkeypatch):
-
+    """test if api google return an empty json"""
     object_apigoogle = api.ApiGoogleMap()
 
     def mock_get(*args):
@@ -29,7 +30,7 @@ def test_api_google_with_empty_json(monkeypatch):
 
 
 def test_api_wiki_with_empty_json(monkeypatch):
-
+    """test if api wikimedia return an empty json"""
     object_api_wiki = api.ApiWiki()
     object_control = Control()
 
@@ -46,7 +47,7 @@ def test_api_wiki_with_empty_json(monkeypatch):
 
 
 def test_api_wiki_with_no_result_found(monkeypatch):
-
+    """test if api wikimedia return a different result than expected"""
     MockResponse({"result": "not found"})
     object_control = Control()
     object_api_wiki = api.ApiWiki()

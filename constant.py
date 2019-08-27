@@ -5,7 +5,7 @@ WIKI_URL = "https://fr.wikipedia.org/w/api.php"
 MAPS_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
 
 GRANDPY_BOT_ANSWERS = ["Voila ce que je sais sur ta demande mon petit :", "Hummm je crois me souvenir de ceci sur"
-                         " ta question mon canard :", "Mais bien sur que j'ai une information sur lieu :"]
+                       "ta question mon canard:", "Mais bien sur que j'ai une information sur lieu :"]
 
 GRANDPY_BOT_DONT_UNDERSTAND = "Je n'ai pas compris ou n'ai pas trouvé d'informations"
 GRANDPY_BOT_QUESTION_EMPTY = "Tu ne m'as rien posé comme question mon petit."
