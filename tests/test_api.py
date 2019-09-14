@@ -48,12 +48,11 @@ def test_api_wiki_with_empty_json(monkeypatch):
 
 def test_api_wiki_with_no_result_found(monkeypatch):
     """test if api wikimedia return a different result than expected"""
-    MockResponse({"result": "not found"})
     object_control = Control()
     object_api_wiki = api.ApiWiki()
 
     def mock_get(*args):
-        return MockResponse()
+        return MockResponse({"result": "not found"})
 
     monkeypatch.setattr(api.requests, "get", mock_get)
     result = object_api_wiki.get_info("www.fake_api_wikimedia.com", {"fake": "parameter"})

@@ -4,7 +4,6 @@ import random
 
 class ModifyUserInput:
     """ check user input to found data to exploit"""
-
     def __init__(self):
         self.input_to_search = None
         self.response_from_papybot = None

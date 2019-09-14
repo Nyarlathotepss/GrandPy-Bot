@@ -1,4 +1,4 @@
-import os, requests, json, wikipedia, constant
+import os, requests, constant
 
 
 class ApiWiki:
