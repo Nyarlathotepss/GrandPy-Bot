@@ -1,4 +1,4 @@
-
+/* call ajax */
 $(document).ready(function(){
     $("#myForm").submit(function(event){
         event.preventDefault();
@@ -12,22 +12,22 @@ $(document).ready(function(){
             success: function(resp) {
                 console.log(resp);
                 displayDialog(resp.dialog_to_show);
-                var latitude = parseInt(resp.latitude);
-                var longitude = parseInt(resp.longitude);
+                var latitude = parseFloat(resp.latitude);
+                var longitude = parseFloat(resp.longitude);
                 initMap(latitude, longitude);
             }
         })
     })
 })
-
+/* display a googlemap with 2 variable lat and lon */
 function initMap(latitude, longitude) {
     var place = {lat:latitude, lng:longitude};
     var map = new google.maps.Map(
-    document.getElementById('content_gmap'), {zoom: 4, center: place});
+        document.getElementById('content_gmap'), {zoom: 4, center: place});
     var marker = new google.maps.Marker({position: place, map: map});
 }
 
-
+/* build and display dialog between user and papybot  */
 function displayDialog(list) {
     for (var i = 0; i < list.length; i++) {
         if (i /2 == 0) {

@@ -61,7 +61,7 @@ footer {
   border-radius: 50%;
 }
 
-.container img.right {
+.container.dark img {
   float: right;
   margin-left: 20px;
   margin-right:0;
@@ -73,7 +73,7 @@ footer {
   display: table;
 }
 
-.darker {
+.container.dark {
   border-color: #ccc;
   background-color: #ddd;
 }
