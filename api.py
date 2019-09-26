@@ -5,9 +5,10 @@ class ApiWiki:
     """class for communication with wikimedia api"""
     def __init__(self):
         self.page_id = str()
-        self.description = str()
+        self.description = None
         self.json_page_id = None
         self.json_description = None
+        self.wiki_coordinates = None
 
     def generate_parameters_wiki_1turn(self, input_user):
         """generate paramaters for wikimedia api to get page id with name place"""
@@ -48,7 +49,15 @@ class ApiWiki:
         print(data)
         pages = data['query']['pages']
         for k, v in pages.items():
-            self.description = str(v['description'])
+            self.description = (v['description'])
+
+    def get_coordinates_from_json(self, json):
+        """get coordinates from json_description"""
+        data = json
+        pages = data['query']['pages']
+        for k, v in pages.items():
+            self.wiki_coordinates = (v['coordinates'][0]['lat'], v['coordinates'][0]['lon'])
+            print(self.wiki_coordinates)
 
     def wiki_procedure_request_get_pageid(self, input_user):
         parameters = self.generate_parameters_wiki_1turn(input_user)
@@ -65,7 +74,7 @@ class ApiGoogleMap:
         self.googlemap_key = os.environ.get("gmap_key")  # Enter your own variable's name environnement
         # instead of ("gmap_key")
         self.googlemap_json = None
-        self.url_apigmap_search = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
+        self.googlemap_coordinates = None
 
     def generate_parameters_gmaps_to_search(self, string):
         """generate paramaters for googlemaps api"""
@@ -83,16 +92,16 @@ class ApiGoogleMap:
     def gmap_comm(self, string):
         """google maps return a map about user input"""
         parameters = self.generate_parameters_gmaps_to_search(string)
-        self.googlemap_json = self.get_info(self.url_apigmap_search, parameters)
-        coordinates = self.get_coordinates_from_json(self.googlemap_json)
-        return coordinates
+        self.googlemap_json = self.get_info(constant.MAPS_URL, parameters)
+        self.googlemap_coordinates = self.get_coordinates_from_json(self.googlemap_json)
 
     def get_coordinates_from_json(self, json):
         """get the localization from .json (wikipedia)"""
         data = json
-        lat, lon = str, str
+        print(data)
+        lat, lon = None, None
         pages = data['candidates']
         for k, v in enumerate(pages):
-            lat = str(v['geometry']['location']["lat"])
-            lon = str(v['geometry']['location']['lng'])
+            lat = (v['geometry']['location']["lat"])
+            lon = (v['geometry']['location']['lng'])
         return lat, lon
